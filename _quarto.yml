@@ -1,8 +1,9 @@
 project:
   type: book
 
-# A Concordia University thesis: run `pixi run concordia` once, uncomment the
-# two lines below, and fill in _quarto-concordia.yml.
+# A university's own format: run `pixi run concordia` or `pixi run stanford`
+# once, uncomment the two lines below with its name, and fill in
+# _quarto-concordia.yml or _quarto-stanford.yml.
 # profile:
 #   default: concordia
 

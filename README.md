@@ -56,7 +56,7 @@ and the chapters from 1.
 
 1. `pixi run concordia`, once. It downloads Concordia's official template from
    concordia.ca and builds the styles from it on your computer.
-2. In `_quarto.yml`, uncomment `profile:` and `default: concordia`.
+2. In `_quarto.yml`, uncomment `profile:` and `default:`, with `concordia`.
 3. In `_quarto-concordia.yml`, fill in your degree (`doctoral` or `masters`),
    title, department, committee, abstract and the optional pages.
 4. `pixi run word`, then `pixi run pdf` for the PDF/A you submit.
@@ -64,6 +64,27 @@ and the chapters from 1.
 Check the result against the [Thesis Preparation Guide](https://www.concordia.ca/content/dam/sgs/docs/handbooks/thesispreparationguide.pdf):
 this starter follows Concordia's templates but isn't made or checked by
 Concordia.
+
+## A Stanford University dissertation
+
+Stanford publishes [format rules](https://studentservices.stanford.edu/my-academics/earn-my-degree/graduate-degree-progress/dissertations-and-theses/prepare-your-work-0)
+rather than a template. The Stanford profile follows them: the title page laid
+out as Stanford's specimen pages (counts as i, not numbered), the abstract
+and other front pages in roman numerals from iv (Axess adds the copyright
+page ii and signature page iii itself, so your file must not contain them),
+a table of contents and lists of tables and illustrations, chapters from 1;
+a 1.5-inch inner margin and one inch elsewhere, Times New Roman 12 in black,
+main text double-spaced.
+
+1. `pixi run stanford`, once (`pixi run stanford -- 1.5` for one-and-a-half
+   spacing).
+2. In `_quarto.yml`, uncomment `profile:` and `default:`, with `stanford`.
+3. In `_quarto-stanford.yml`, fill in your title, department or program,
+   degree, name, month and year, abstract and the optional pages.
+4. `pixi run word`, then `pixi run pdf`.
+
+This follows Stanford's published rules but isn't made or checked by
+Stanford; check the result against them before you submit.
 
 ## The PDF you submit
 

@@ -1,0 +1,27 @@
+# Stanford University dissertation: Stanford's format rules (title page,
+# roman front pages from iv, chapters from 1; Axess adds the copyright and
+# signature pages). Run `pixi run stanford` once, switch this profile on in
+# _quarto.yml (profile: default: stanford), and fill in yours.
+format:
+  docx:
+    reference-doc: universities/stanford/reference.docx
+    toc: false          # the front pages carry the table of contents
+
+filters:
+  - universities/stanford/front-pages.lua
+
+stanford:
+  title: "Archives and Their Silences"
+  document: "dissertation"                 # D.M.A.: "final project"
+  submitted-to: "Department of History"    # or "Graduate School of Business", "Program in ..."
+  degree: "Doctor of Philosophy"
+  author: "A. Researcher"
+  date: "April 2027"                       # month and year you submit electronically
+  abstract: |
+    Colonial archives were not neutral collections. This dissertation reads
+    two of them along and against their grain, and asks what their silences
+    can tell.
+  acknowledgments: |
+    To my advisor, and to the archivists who found the boxes.
+  list-of-tables: true
+  list-of-illustrations: true

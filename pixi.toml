@@ -17,4 +17,5 @@ word = { cmd = "quarto render --to docx", description = "The whole thesis as one
 html = { cmd = "quarto render --to html", description = "The thesis as a website, in _book/" }
 preview = { cmd = "quarto preview", description = "A live preview that updates as you save" }
 pdf = { cmd = "python tools/pdf.py", description = "The Word file as PDF/A, contents filled in (needs LibreOffice)" }
+stanford = { cmd = "python tools/stanford_template.py", description = "Once, for a Stanford dissertation: build the reference document from Stanford's format rules (add -- 1.5 for one-and-a-half spacing)" }
 concordia = { cmd = "python tools/concordia_template.py", description = "Once, for a Concordia thesis: build the reference document from Concordia's official template" }

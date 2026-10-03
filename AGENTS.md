@@ -26,6 +26,7 @@ template.
 | `pixi run word` | The whole thesis as one Word file in `template.docx`, in `_book/` |
 | `pixi run preview` | A live preview in the browser |
 | `pixi run pdf` | The Word file as PDF/A, contents and lists filled in (needs LibreOffice) |
+| `pixi run stanford` | Once, for a Stanford dissertation: builds `universities/stanford/reference.docx` from Stanford's format rules (`-- 1.5` for one-and-a-half spacing) |
 | `pixi run concordia` | Once, for a Concordia thesis: builds `universities/concordia/reference.docx` from Concordia's official template |
 
 ## Moving their chapters in
@@ -54,6 +55,15 @@ template.
    pages. Ask them for each value; don't invent names or dates.
 4. `pixi run word`, then `pixi run pdf`. Check the page numbers with them:
    title and signature pages unnumbered, abstract iii, first chapter 1.
+
+## A Stanford University dissertation
+
+1. `pixi run stanford`; uncomment the profile in `_quarto.yml` with `stanford`.
+2. Fill in `_quarto-stanford.yml` with the author: title, `submitted-to` (their
+   department, program or school), degree, name, month and year of
+   electronic submission, abstract, optional pages. Ask; don't invent.
+3. `pixi run word`, then `pixi run pdf`. The file must not contain a copyright
+   or signature page (Axess adds them): the abstract is page iv.
 
 ## Known limits, to say plainly
 
