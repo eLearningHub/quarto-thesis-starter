@@ -1,0 +1,3 @@
+# Preface {.unnumbered}
+
+A worked example: two chapters written in Word with Zotero citations, brought into Quarto with `pixi run import`, and rendered in a university template with `pixi run word`.

@@ -1,0 +1,23 @@
+project:
+  type: book
+
+book:
+  title: "Archives and Their Silences"
+  author: "A. Researcher"
+  chapters:
+    - index.qmd
+    # chapters: start (pixi run import keeps this list in step with word/)
+
+    # chapters: end
+    - references.qmd
+
+bibliography: references.json
+
+# A thesis in Persian or another right-to-left language: uncomment both.
+# lang: fa
+# dir: rtl
+
+format:
+  docx:
+    reference-doc: template.docx
+  html: default

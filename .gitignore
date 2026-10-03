@@ -1,0 +1,8 @@
+.pixi/
+_book/
+.quarto/
+*.docx#
+~$*
+
+/.quarto/
+**/*.quarto_ipynb

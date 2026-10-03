@@ -1,0 +1,17 @@
+# The tools this thesis needs, the same versions on Windows, macOS and Linux.
+# `pixi install` once; then the tasks below. Nothing else to install.
+[workspace]
+name = "thesis"
+channels = ["conda-forge"]
+platforms = ["win-64", "osx-arm64", "osx-64", "linux-64"]
+
+[dependencies]
+quarto = "1.9.*"
+pandoc = "3.8.*"
+python = "3.12.*"
+
+[tasks]
+import = { cmd = "python tools/import_word.py", description = "Convert every Word chapter in word/ (never overwrites a converted chapter)" }
+word = { cmd = "quarto render --to docx", description = "The whole thesis as one Word file, in template.docx, in _book/" }
+html = { cmd = "quarto render --to html", description = "The thesis as a website, in _book/" }
+preview = { cmd = "quarto preview", description = "A live preview that updates as you save" }
