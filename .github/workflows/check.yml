@@ -44,7 +44,9 @@ jobs:
     - name: Master's
       if: matrix.thesis == 'concordia-masters'
       shell: bash
-      run: sed -i.bak 's/^  degree-level: doctoral.*/  degree-level: masters/' _quarto-concordia.yml
+      run: |
+        sed -i.bak 's/^  degree-level: doctoral.*/  degree-level: masters/' _quarto-concordia.yml
+        grep -n 'degree-level' _quarto-concordia.yml
 
     - name: Render the thesis
       run: pixi run word
