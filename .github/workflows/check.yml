@@ -1,7 +1,7 @@
 name: Check
 
 # Builds the example thesis on Windows, macOS and Linux, plain and with the
-# Concordia profile (doctoral everywhere, master's on Linux), and the PDF/A
+# Concordia (doctoral everywhere, master's on Linux) and Stanford profiles, and the PDF/A
 # on Linux and Windows. Runs only in the template itself, not in theses made
 # from it.
 on:
@@ -17,7 +17,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest, macos-latest, ubuntu-latest]
-        thesis: [plain, concordia-doctoral, concordia-masters]
+        thesis: [plain, concordia-doctoral, concordia-masters, stanford]
         exclude:
           - { os: windows-latest, thesis: concordia-masters }
           - { os: macos-latest, thesis: concordia-masters }
@@ -40,6 +40,13 @@ jobs:
       run: |
         pixi run concordia
         echo "QUARTO_PROFILE=concordia" >> "$GITHUB_ENV"
+
+    - name: Stanford profile
+      if: matrix.thesis == 'stanford'
+      shell: bash
+      run: |
+        pixi run stanford
+        echo "QUARTO_PROFILE=stanford" >> "$GITHUB_ENV"
 
     - name: Master's
       if: matrix.thesis == 'concordia-masters'
@@ -65,7 +72,7 @@ jobs:
 
     - name: Check what was made
       shell: bash
-      run: pixi run python .github/scripts/check_output.py ${{ startsWith(matrix.thesis, 'concordia') && 'concordia' || '' }}
+      run: pixi run python .github/scripts/check_output.py ${{ startsWith(matrix.thesis, 'concordia') && 'concordia' || matrix.thesis == 'stanford' && 'stanford' || '' }}
 
     - uses: actions/upload-artifact@v4
       with:

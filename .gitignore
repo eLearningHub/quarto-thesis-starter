@@ -10,3 +10,7 @@ _book/
 # Built on your computer from Concordia's official template by `pixi run concordia`.
 universities/concordia/reference.docx
 universities/concordia/footer.txt
+
+# Built on your computer from Stanford's format rules by `pixi run stanford`.
+universities/stanford/reference.docx
+universities/stanford/footer.txt
