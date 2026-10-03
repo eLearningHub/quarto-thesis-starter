@@ -1,6 +1,11 @@
 project:
   type: book
 
+# A Concordia University thesis: run `pixi run concordia` once, uncomment the
+# two lines below, and fill in _quarto-concordia.yml.
+# profile:
+#   default: concordia
+
 book:
   title: "Archives and Their Silences"
   author: "A. Researcher"

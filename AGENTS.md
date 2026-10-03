@@ -25,6 +25,8 @@ template.
 | `pixi run import` | Converts each `word/*.docx` to a chapter, gathers citations into `references.json`, updates the chapter list in `_quarto.yml` |
 | `pixi run word` | The whole thesis as one Word file in `template.docx`, in `_book/` |
 | `pixi run preview` | A live preview in the browser |
+| `pixi run pdf` | The Word file as PDF/A, contents and lists filled in (needs LibreOffice) |
+| `pixi run concordia` | Once, for a Concordia thesis: builds `universities/concordia/reference.docx` from Concordia's official template |
 
 ## Moving their chapters in
 
@@ -42,6 +44,16 @@ template.
 4. Set the title and author in `_quarto.yml`. For a right-to-left thesis
    (Persian, Arabic, Hebrew), uncomment `lang` and `dir` there.
 5. Run `pixi run word` and tell them where the file is.
+
+## A Concordia University thesis
+
+1. `pixi run concordia` (downloads Concordia's template; never commit what it builds).
+2. Uncomment `profile: default: concordia` in `_quarto.yml`.
+3. Fill in `_quarto-concordia.yml` with the author: degree level (`doctoral` or
+   `masters`), title, department, degree, date, committee, abstract, optional
+   pages. Ask them for each value; don't invent names or dates.
+4. `pixi run word`, then `pixi run pdf`. Check the page numbers with them:
+   title and signature pages unnumbered, abstract iii, first chapter 1.
 
 ## Known limits, to say plainly
 

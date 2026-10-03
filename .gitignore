@@ -6,3 +6,7 @@ _book/
 
 /.quarto/
 **/*.quarto_ipynb
+
+# Built on your computer from Concordia's official template by `pixi run concordia`.
+universities/concordia/reference.docx
+universities/concordia/footer.txt
