@@ -1,8 +1,9 @@
 name: Check
 
-# Builds the example thesis on Windows, macOS and Linux: pixi install, import
-# the Word chapters, render the Word file. Runs only in the template itself,
-# not in theses made from it.
+# Builds the example thesis on Windows, macOS and Linux, plain and with the
+# Concordia profile (doctoral everywhere, master's on Linux), and the PDF/A
+# on Linux and Windows. Runs only in the template itself, not in theses made
+# from it.
 on:
   push:
     branches: [main]
@@ -16,6 +17,11 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest, macos-latest, ubuntu-latest]
+        thesis: [plain, concordia-doctoral, concordia-masters]
+        exclude:
+          - { os: windows-latest, thesis: concordia-masters }
+          - { os: macos-latest, thesis: concordia-masters }
+    name: ${{ matrix.thesis }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
@@ -28,14 +34,38 @@ jobs:
     - name: Import the Word chapters
       run: pixi run import
 
-    - name: Render the thesis in the template
+    - name: Concordia profile
+      if: startsWith(matrix.thesis, 'concordia')
+      shell: bash
+      run: |
+        pixi run concordia
+        echo "QUARTO_PROFILE=concordia" >> "$GITHUB_ENV"
+
+    - name: Master's
+      if: matrix.thesis == 'concordia-masters'
+      shell: bash
+      run: sed -i.bak 's/^  degree-level: doctoral.*/  degree-level: masters/' _quarto-concordia.yml
+
+    - name: Render the thesis
       run: pixi run word
 
-    - name: The Word file was made
+    - name: LibreOffice (Linux)
+      if: runner.os == 'Linux'
+      run: sudo apt-get update && sudo apt-get install -y --no-install-recommends libreoffice-writer
+
+    - name: LibreOffice (Windows)
+      if: runner.os == 'Windows'
+      run: choco install libreoffice-fresh -y --no-progress
+
+    - name: PDF/A
+      if: runner.os != 'macOS'
+      run: pixi run pdf
+
+    - name: Check what was made
       shell: bash
-      run: ls -l _book/*.docx
+      run: pixi run python .github/scripts/check_output.py ${{ startsWith(matrix.thesis, 'concordia') && 'concordia' || '' }}
 
     - uses: actions/upload-artifact@v4
       with:
-        name: thesis-${{ matrix.os }}
-        path: _book/*.docx
+        name: ${{ matrix.thesis }}-${{ matrix.os }}
+        path: _book/*.*

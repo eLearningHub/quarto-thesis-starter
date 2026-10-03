@@ -46,6 +46,31 @@ own), then run `pixi run word` again.
 Or ask an AI assistant (Claude Code, Codex) to do it: `AGENTS.md` tells it the
 rules, starting with *never change your wording*.
 
+## A Concordia University thesis
+
+The Concordia profile makes the thesis the way the School of Graduate
+Studies' templates do, doctoral or master's: the title page and signature
+page (counted i and ii, not numbered), the abstract and other front pages in
+roman numerals from iii, a table of contents and lists of figures and tables,
+and the chapters from 1.
+
+1. `pixi run concordia`, once. It downloads Concordia's official template from
+   concordia.ca and builds the styles from it on your computer.
+2. In `_quarto.yml`, uncomment `profile:` and `default: concordia`.
+3. In `_quarto-concordia.yml`, fill in your degree (`doctoral` or `masters`),
+   title, department, committee, abstract and the optional pages.
+4. `pixi run word`, then `pixi run pdf` for the PDF/A you submit.
+
+Check the result against the [Thesis Preparation Guide](https://www.concordia.ca/content/dam/sgs/docs/handbooks/thesispreparationguide.pdf):
+this starter follows Concordia's templates but isn't made or checked by
+Concordia.
+
+## The PDF you submit
+
+`pixi run pdf` turns the Word file into PDF/A, the archival PDF most
+universities ask for, with the table of contents and lists filled in. It
+needs [LibreOffice](https://www.libreoffice.org) (free), installed once.
+
 ## فارسی
 
 پایان‌نامه‌تان در Word است و دانشگاه یک الگوی Word داده. این پوشه فصل‌ها را به

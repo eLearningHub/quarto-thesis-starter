@@ -9,9 +9,12 @@ platforms = ["win-64", "osx-arm64", "osx-64", "linux-64"]
 quarto = "1.9.*"
 pandoc = "3.8.*"
 python = "3.12.*"
+python-docx = "1.*"
 
 [tasks]
 import = { cmd = "python tools/import_word.py", description = "Convert every Word chapter in word/ (never overwrites a converted chapter)" }
 word = { cmd = "quarto render --to docx", description = "The whole thesis as one Word file, in template.docx, in _book/" }
 html = { cmd = "quarto render --to html", description = "The thesis as a website, in _book/" }
 preview = { cmd = "quarto preview", description = "A live preview that updates as you save" }
+pdf = { cmd = "python tools/pdf.py", description = "The Word file as PDF/A, contents filled in (needs LibreOffice)" }
+concordia = { cmd = "python tools/concordia_template.py", description = "Once, for a Concordia thesis: build the reference document from Concordia's official template" }

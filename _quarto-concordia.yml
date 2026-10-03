@@ -1,0 +1,36 @@
+# Concordia University thesis: the School of Graduate Studies' formatting
+# (title and signature pages, roman front pages from iii, chapters from 1).
+# Switch it on in _quarto.yml (profile: default: concordia). Fill in yours.
+format:
+  docx:
+    reference-doc: universities/concordia/reference.docx
+    toc: false          # the front pages carry Concordia's own table of contents
+
+filters:
+  - universities/concordia/front-pages.lua
+
+concordia:
+  degree-level: doctoral          # or: masters
+  title: "Archives and Their Silences"
+  author: "A. Researcher"
+  department: "History"
+  degree: "Doctor of Philosophy (History)"   # master's: e.g. "Master of Arts (History)"
+  degree-short: "Ph.D."           # doctoral abstract line only
+  date: "April 2027"              # month and year of initial submission
+  year: "2027"
+  committee:
+    - { role: "Chair", name: "Dr. Chair Name" }
+    - { role: "External Examiner", name: "Dr. External Examiner" }
+    - { role: "Examiner", name: "Dr. Examiner One" }
+    - { role: "Examiner", name: "Dr. Examiner Two" }
+    - { role: "Thesis Supervisor", name: "Dr. Supervisor Name" }
+  program-director: "Dr. Program Director, Graduate Program Director"
+  dean: "Dr. Dean Name"
+  faculty: "Faculty of Arts and Science"
+  abstract: |
+    Colonial archives were not neutral collections. This thesis reads two of
+    them along and against their grain, and asks what their silences can tell.
+  acknowledgments: |
+    To my supervisor, and to the archivists who found the boxes.
+  list-of-figures: true
+  list-of-tables: true
